@@ -1,0 +1,28 @@
+<div class="nested-fields">
+
+<%# フォーム %>
+<!---->
+    <%= f.label "子1" %>
+    <%= f.text_field :c_name_1 %>
+    <%= f.label "子2" %>
+    <%= f.text_field :c_name_2 %>
+    <%= link_to_remove_association "子を削除", f %>
+
+
+<%# 孫を追加ボタン %>
+    <div>
+    <%= link_to_add_association "孫を追加", f, :grandchildren,
+    class: 'btn btn-success',
+        data: {
+        data_association_insertion_traversal: 'closest',
+        association_insertion_method: 'append' }
+    %>
+    </div>
+    
+<%# 孫の追加要素へ飛ばす %>
+    <div class="grandchildren">
+    <%= f.fields_for :grandchildren do |gr| %>
+        <%= render "grandchild_fields", f: gr %>
+    <%end%>
+    </div>
+</div>
