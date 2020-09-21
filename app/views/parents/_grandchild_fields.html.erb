@@ -1,5 +1,11 @@
 <div class="nested-fields">
     <%= f.label "孫" %>
-    <%= f.text_field :g_name %>
+    <%= f.text_field :g_name_1 %>
+    <%= f.label "孫2" %>
+    <%= f.collection_select(:active_id, Active.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
+    <%= f.label "孫3" %>
+    <%= f.text_field :g_name_2 %>
+    <%= f.label "孫4" %>
+    <%= f.collection_select(:active_id, Active.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
     <%= link_to_remove_association "孫を削除", f %>
 </div>

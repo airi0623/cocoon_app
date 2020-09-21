@@ -1,12 +1,13 @@
 <div class="nested-fields">
-    <%= f.label "子" %>
-    <%= f.text_field :c_name %>
-    <%= link_to_remove_association "子を削除", f %>
-
-    <%= f.fields_for :grandchildren do |u| %>
+<!--
+    <%= ch.label "子" %>
+    <%= ch.text_field :c_name %>
+    <%= link_to_remove_association "子を削除", ch %>
+-->
+    <%= ch.fields_for :grandchildren do |ga| %>
         <%#= render partial: "grandchild_fields", local: {f: u} %>
-        <%= render "grandchild_fields", f: u %>
+        <%= render "grandchild_fields", f: ga %>
     <%end%>
 
-    <%= link_to_add_association "孫を追加", f, :grandchildren %>
+    <%= link_to_add_association "孫を追加", ch, :grandchildren %>
 </div>
