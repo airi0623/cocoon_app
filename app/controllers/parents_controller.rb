@@ -15,6 +15,6 @@ class ParentsController < ApplicationController
 
   private
   def parent_params
-        params.require(:parent).permit(:p_name, children_attributes: [:id, :c_name, :_destroy, grandchildren_attributes: [:id, :g_name, :_destroy]])
+        params.require(:parent).permit(:p_name, children_attributes: [:id, :c_name, :_destroy, grandchildren_attributes: [:id, :g_name_1, :g_name_2, :active_id, :_destroy]])
   end
 end
