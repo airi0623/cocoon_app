@@ -13,19 +13,22 @@
 ActiveRecord::Schema.define(version: 2020_09_20_024111) do
 
   create_table "children", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "c_name"
-    t.integer "parent_id"
+    t.bigint "parent_id", null: false
+    t.string "c_name_1"
+    t.string "c_name_2"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_id"], name: "index_children_on_parent_id"
   end
 
   create_table "grandchildren", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "child_id", null: false
     t.string "g_name_1"
     t.string "g_name_2"
-    t.integer "child_id"
     t.integer "active_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["child_id"], name: "index_grandchildren_on_child_id"
   end
 
   create_table "parents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -34,4 +37,6 @@ ActiveRecord::Schema.define(version: 2020_09_20_024111) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "children", "parents"
+  add_foreign_key "grandchildren", "children"
 end

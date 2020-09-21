@@ -1,8 +1,10 @@
 <h1>Parents#new</h1>
 <%= form_with(model: @parent, local: true) do |f| %>
+    
     <%= f.label "親"%>
     <%= f.text_field :p_name %>
     <div class="parents">
+    
         <%= f.fields_for :children do |ch| %>
             <%= render "children_fields", ch: ch %>
         <% end %>
