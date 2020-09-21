@@ -1,16 +1,16 @@
 <h1>Parents#new</h1>
-<%= form_with(model: @parent, local: true) do |s| %>
-    <%= s.label "親"%>
-    <%= s.text_field :p_name %>
+<%= form_with(model: @parent, local: true) do |f| %>
+    <%= f.label "親"%>
+    <%= f.text_field :p_name %>
     <div class="parents">
-        <%= s.fields_for :children do |t| %>
-            <%= render "children_fields", f: t %>
+        <%= f.fields_for :children do |ch| %>
+            <%= render "children_fields", ch: ch %>
         <% end %>
         <div class="links">
-            <%#= link_to_add_association "子を追加", s, :children %>
+            <%#= link_to_add_association "子を追加", f, :children %>
         </div>
     </div>
     <div class="actions">
-        <%= s.submit %>
+        <%= f.submit %>
     </div>
 <% end %>
