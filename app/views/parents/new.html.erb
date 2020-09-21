@@ -1,0 +1,17 @@
+<h1>Parents#new</h1>
+<%# <p>Find me in app/views/parents/new.html.erb</p> %>
+<%= form_with model: @parent, local: true do |s| %>
+    <%= s.label :p_name %>
+    <%= s.text_field :p_name %>
+    <div class="parents">
+        <%= s.fields_for :children do |t| %>
+            <%= render "children_fields", f: t %>
+        <% end %>
+        <div class="links">
+            <%# link_to_add_association "子供を追加", s, :children %>
+        </div>
+    </div>
+    <div class="actions">
+        <%= s.submit %>
+    </div>
+<% end %>
