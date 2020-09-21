@@ -1,9 +1,10 @@
 <div class="nested-fields">
-    <%= f.label "c_name" %>
+    <%= f.label "子" %>
     <%= f.text_field :c_name %>
-    <%= link_to_remove_association "remove child", f %>
+    <%= link_to_remove_association "子を削除", f %>
 
     <%= f.fields_for :grandchildren do |u| %>
+        <%#= render partial: "grandchild_fields", local: {f: u} %>
         <%= render "grandchild_fields", f: u %>
     <%end%>
 
