@@ -2,32 +2,33 @@
 
 <%# 親のフォーム %>
 <%= form_with(model: @parent, local: true) do |f| %>
-    <%= f.label "親"%>
-    <%= f.text_field :p_name %>
+  <%= f.label "親"%>
+  <%= f.text_field :p_name %>
 
 
 <%# 子供を追加するボタン %>
 <!---->
-    <div class="links">
-        <%= link_to_add_association "子供を追加", f, :children,
-        class: 'btn btn-success',
-        data: {
-        data_association_insertion_traversal: 'closest',
-        association_insertion_method: 'append' }
-        %>
-    </div>
+  <div class="links">
+    <%= link_to_add_association "子供を追加", f, :children,
+    class: 'btn btn-success',
+    data: {
+    data_association_insertion_traversal: 'closest',
+    association_insertion_method: 'append' }
+    %>
+  </div>
 
 
 <%# 子供の追加要素へ飛ばす %>
-    <div class="children">
-    <%= f.fields_for :children do |ch| %>
-        <%= render "child_fields", f: ch %>
-    <% end %>
-    </div>
+  <div class="children">
+  <%= f.fields_for :children do |ch| %>
+    <%= render "child_fields", f: ch %>
+  <% end %>
+  </div>
 
 
 <%# フォームの送信ボタン %>
-    <div class="actions">
-        <%= f.submit %>
-    </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
 <% end %>

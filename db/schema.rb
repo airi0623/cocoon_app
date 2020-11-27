@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2020_09_20_024111) do
   create_table "grandchildren", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "child_id", null: false
     t.string "g_name_1"
-    t.string "g_name_2"
     t.integer "active_id"
+    t.integer "g_name_2"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["child_id"], name: "index_grandchildren_on_child_id"
